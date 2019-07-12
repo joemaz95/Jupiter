@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html ng-app = "Jupiter">
+<head>
+  <link rel="icon" type="image/png" href="http://localhost:8800/icons/jupiter_icon.png">
+  <meta charset = "utf-8">
+  <title>Jupiter</title>
+
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" type = "text/javascript"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js" type = "text/javascript"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js" type = "text/javascript"></script>
+  <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
+
+  <script src = "searchCtrl.js" type = "text/javascript"></script>
+  <script src = "angularjs-dropdown-multiselect.js" type="text/javascript"></script>
+
+  <script src="Chart.js"></script>
+  <script src="angular-chart.js"></script>
+
+  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel = "stylesheet" type = "text/css" href = "index.css">
+  <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel = "stylesheet" href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+  <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Raleway:400,500,800">
+
+</head>
+
+<body ng-controller = "searchController">
+  <div class = "header">
+    <md-icon md-svg-src = "http://localhost:8800/icons/jupiter_icon.svg" class = "top_icon" aria-label = "jupiter"></md-icon>
+    <h2>jupiter</h2>
+    <div class="profileButton" onclick="toggleDropdown()"><div class="nameHalfOfButton">{{loggedIn}}</div><i class="material-icons dropdownArrow">keyboard_arrow_down</i>
+      <div id="myDropdown" class="accountDropdown">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+
+  </div>
+  <div class = "wrap">
+    <div class = "searchcf">
+      <div class = "filterview" ng-show = "areResults">
+        <h2 ng-show = "areResults"> {{results.data.total_record_count}} Documents Matched<h2>
+
+        <p>{{final_query}}</p>
+        <p>{{final_gender}}</p>
+        <p>{{final_age_opt}}</p>
+        <p>{{final_age_input}}</p>
+        <p>{{final_between_input}}</p>
+      </div>
+      <i class="material-icons grapharrowdown" ng-show = "areResults && !show_graph" ng-click = "show_graph = !show_graph">keyboard_arrow_down</i>
+      <i class="material-icons grapharrow" ng-show = "areResults && show_graph" ng-click = "show_graph = !show_graph">keyboard_arrow_up</i>
+      <hr ng-show = "areResults" style = "margin-left: -15px;">
+
+      <div class="chartcontainer" ng-show = "areResults && show_graph">
+        <div class = "charts">
+          <div ng-controller = "chartController">
+            <div class="chartsRow1">
+              <canvas id="ageChart" class="chart chart-bar"
+                      chart-data="data1"
+                      chart-labels="labels1"
+                      chart-series="series1"
+                      chart-options="options1"
+                      chart-click="onClick"
+                      chart-colors="colors">
+
+              </canvas>
+              <canvas class="chart chart-bar"
+                      chart-data="data2"
+                      chart-labels="labels2"
+                      chart-series="series2"
+                      chart-options="options2"
+                      chart-click="onClick"
+                      chart-colors="colors">
+
+              </canvas>
+            </div>
+            <div class="chartsRow2">
+              <canvas class="chart chart-bar"
+                      chart-data="data3"
+                      chart-labels="labels3"
+                      chart-series="series3"
+                      chart-options="options3"
+                      chart-click="onClick"
+                      chart-colors="colors">
+
+              </canvas>
+              <canvas class="chart chart-bar"
+                      chart-data="data4"
+                      chart-labels="labels4"
+                      chart-series="series4"
+                      chart-options="options4"
+                      chart-click="onClick"
+                      chart-colors="colors">
+
+              </canvas>
+
+            </div>
+          </div>
+        </div>
+    </div>
+      <hr ng-show = "areResults && show_graph" style = "margin-left: -15px; margin-top: 0px;">
+
+      <div class = "searchtab" ng-click = "showdemo = false" ng-class = "{'searchtab': !showdemo, 'tabdeselect': showdemo}">
+        <h3>Single Patient</h3>
+        <md-icon md-svg-src = "http://localhost:8800/icons/jupiter_single_icon.svg" class = "tabicon" aria-label = "jupiter"></md-icon>
+      </div>
+      <div class = "searchtab" ng-click = "showdemo = true; patientroot = null; patientext = null;" ng-class = "{'searchtab': showdemo, 'tabdeselect': !showdemo}">
+        <h3>Population</h3>
+        <md-icon md-svg-src = "http://localhost:8800/icons/jupiter_pop_icon.svg" class = "tabiconpop" aria-label = "jupiter"></md-icon>
+      </div>
+
+      <div class = "refinepanel" ng-show = "showdemo">
+        <h2>Demographics</h2>
+        <div class = "searchoptions">
+          <div class = "searchopt" ng-dropdown-multiselect = "" options = "gender_fields" selected-model = "gender_model" extra-settings = "drop_down_settings" translation-texts="gender_translation"></div>
+          <div class = "searchopt" ng-dropdown-multiselect = "" options = "age_fields" selected-model = "age_model" extra-settings = "drop_down_settings" translation-texts="age_translation"></div>
+          <form class = "ageform">
+            <input class = "ageinput" type = "text" ng-model = "age_input">
+            <input class = "ageinput" type = "text" ng-model = "between_input" ng-show = "age_model[0].id == 3">
+          </form>
+        </div>
+      </div>
+
+      <div class = "refinepanel" ng-show = "!showdemo">
+        <h2> Patient Identifier </h2>
+        <div class = "searchoptions">
+          <form class = "singlepatientinput">
+            <label class = "idlabel"> Root: </label>
+            <input class = "idinput" type = "text" ng-model = "patient_root" style = "width: 15%;">
+            <label class = "idlabel"> Extension: </label>
+            <input class = "idinput" type = "text" ng-model = "patient_ext">
+          </form>
+        </div>
+      </div>
+
+      <div class = "eventpanel">
+        <form>
+
+          <input ng-keyup="$event.keyCode == 13 && execsearch()" class = "searchbar" type = "text" ng-model = "query">
+          <!-- Autocomplete search bar instead of regular search bar not included
+          <div ng-controller = "autoSearch as ctrl" >
+            <md-autocomplete class = "autosearchbar"
+              md-input-name = "autoCompleteField"
+              md-input-minlength = "3"
+              md-input-maxlength = "25"
+              md-selected-item = "ctrl.selectedItem"
+              md-search-text = "ctrl.searchText"
+              md-items = "item in ctrl.qsearch(ctrl.searchText)"
+              md-item-text = "item.display"
+              md-dropdown-position = "bottom">
+              <md-item-template>
+                  <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+              </md-item-template>
+            </md-autocomplete>
+          </div>
+          -->
+
+          <label>DSL mode</label>
+          <input type = "checkbox" ng-model = "DSLmode">
+          <a href="kamioka_dsl_cheat_sheet_v1.pdf"><label class="userGuideLink">DSL User Guide</label></a>
+        </form>
+      </div>
+
+
+
+
+
+      <button type = "submit" ng-click = "execsearch()"><i class = "material-icons md-30">search</i>&nbsp;Search</button>
+    </div>
+
+    <div class = "resultsview" ng-show = "areResults">
+      <div class = "resultsfilter">
+        <div class = "searchopt" ng-dropdown-multiselect = "" options = "sort_fields" selected-model = "sortby_model" extra-settings = "drop_down_settings" translation-texts="sort_translation" events = "drop_down_events"></div>
+        <div class = "searchopt" ng-dropdown-multiselect = "" options = "dir_fields" selected-model = "dir_model" extra-settings = "drop_down_settings" translation-texts="dir_translation" events = "drop_down_events"></div>
+        <div class = "searchopt" ng-dropdown-multiselect = "" options = "doc_fields" selected-model = "doc_model" extra-settings = "drop_down_settings" translation-texts="doc_translation" events = "drop_down_events"></div>
+      </div>
+      <hr style = "width: 100%;">
+
+      <div class = "resultsbox">
+        <div class="documentDiv" onclick="window.open('http://localhost:8800/icons/sample_doc.pdf');" ng-repeat = "doc in results.data.hits | limitTo: RES_PER_PAGE:(currentpage - 1) * RES_PER_PAGE">
+          <h3>{{doc.document_root}} - {{doc.document_extension}}</h3>
+          <p ng-bind-html="doc.snippets[0] | trust">{{doc.snippets[0]}}</p>
+
+          <p ng-bind-html="doc.snippets[1] | trust">{{doc.snippets[1]}}</p>
+          <!--
+          <p ng-bind-html="doc.snippets[2] | trust">{{doc.snippets[2]}}</p>
+          <p ng-bind-html="doc.snippets[3] | trust">{{doc.snippets[3]}}</p>
+          -->
+        </div>
+      </div>
+      <br>
+      <div class = "pageview">
+        <i class = "material-icons pagearrow" ng-click = "prev_page()">keyboard_arrow_left</i>
+        <div class = "pagenum" ng-click = "set_page(1)" ng-class = "{'pagenumfocus': currentpage == 1}">{{page_set + 1}}</div>
+        <div class = "pagenum" ng-click = "set_page(2)" ng-class = "{'pagenumfocus': currentpage == 2}">{{page_set + 2}}</div>
+        <div class = "pagenum" ng-click = "set_page(3)" ng-class = "{'pagenumfocus': currentpage == 3}">{{page_set + 3}}</div>
+        <div class = "pagenum" ng-click = "set_page(4)" ng-class = "{'pagenumfocus': currentpage == 4}">{{page_set + 4}}</div>
+        <div class = "pagenum" ng-click = "set_page(5)" ng-class = "{'pagenumfocus': currentpage == 5}">{{page_set + 5}}</div>
+        <i class = "material-icons pagearrow" ng-click = "next_page()">keyboard_arrow_right</i>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

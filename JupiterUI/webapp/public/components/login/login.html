@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "Jupiter.login">
+<head>
+    <link rel="icon" type="image/png" href="http://localhost:8800/icons/jupiter_icon.png">
+    <meta charset = "utf-8">
+    <meta charset="UTF-8">
+    <title>Jupiter</title>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" type = "text/javascript"></script>
+    <script src = "loginCtrl.js" type = "text/javascript"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .loginButton {
+            border: none;
+            background-color: #344659;
+            color: white;
+            height: 40px;
+            width: 100%;
+            border-radius: 1px;
+            font-size: 12pt;
+            font-family: "Calibri", Calibri, sans-serif;
+            font-weight: lighter;
+            margin-top: 5%;
+        }
+        .loginButtonDisabled{
+            border: none;
+            background-color: #DFE3EC;
+            color: white;
+            height: 40px;
+            width: 100%;
+            border-radius: 1px;
+            font-size: 12pt;
+            font-family: "Calibri", Calibri, sans-serif;
+            font-weight: lighter;
+        }
+        .loginCenter {
+            text-align: center;
+            color: gray;
+        }
+        .loginDiv {
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20%;
+        }
+        .loginField {
+            border: none;
+            font-size: 20px;
+            width: auto;
+        }
+        .loginForm {
+
+        }
+        .loginLabelGray {
+            color: #96989D;
+        }
+        .loginLink {
+            color: gray;
+            text-decoration: none;
+        }
+        .loginSpan {
+            border-bottom: thin solid #344659;
+            width: 100%;
+        }
+        .loginSpanGray {
+            padding-bottom: 5px;
+            border-bottom: thin solid #96989D;
+            width: 100%;
+        }
+        .loginSymbol {
+            width: 50px;
+            font-size: 25px;
+        }
+        .nonMemberDiv {
+            width: 100%;
+            text-align: center;
+            padding-top: 5%;
+        }
+        .nonMemberLink {
+            color: #344659;
+            font-family: "Calibri", Calibri, sans-serif;
+        }
+
+    </style>
+</head>
+<body ng-controller = "loginController">
+    <form name='loginForm' class='loginForm'>
+        <div class='loginDiv'>
+            <div ng-include="'http://localhost:8800/icons/jupiter_logo.svg'"></div>
+            <div class='loginSpan' ng-class="{'loginSpanGray': loginForm.user.$invalid}"><label class='loginSymbol' ng-class="{'loginLabelGray': loginForm.user.$invalid}"><i class="material-icons">mail_outline</i> | </label><input name="user" class='loginField' ng-model="user" type='text' placeholder='Email' required></div><br>
+            <div class='loginSpan' ng-class="{'loginSpanGray': loginForm.pass.$invalid}"><label class='loginSymbol' ng-class="{'loginLabelGray': loginForm.pass.$invalid}"><i class="material-icons">lock_outline</i> | </label> <input name="pass" class='loginField' ng-model="pass" type='password' placeholder='Password' required></div><br>
+            <div class='loginCenter'><input type="checkbox" ng-model="rememberCheck"> Remember me | <span class="psw"><a class='loginLink' href="#">Forgot password?</a></span></div>
+            <button class='loginButton' ng-click="execlogin()" type='submit' ng-disabled='loginForm.$invalid' ng-class="{'loginButtonDisabled': loginForm.$invalid}">LOGIN</button>
+            <div class="nonMemberDiv"><a class='nonMemberLink' href="#">Not a member? <b>Contact us!</b></a></div>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,441 @@
+* {
+  margin: auto;
+}
+
+body {
+  height: 100%;
+}
+
+.searchbar {
+  width: 92%;
+  height: 30px;
+  color: black;
+  font-size: 13px;
+  padding-left: 7px;
+  font-family: sans-serif;
+}
+
+
+/* Style for autocomplete search bar not included
+.autosearchbar {
+  width: 92%;
+  color: black;
+  font-family: sans-serif;
+  margin-left: 0px;
+}
+*/
+
+button[type=submit] {
+  height: 45px;
+  width: 180px;
+  background-color: #344659;
+  font-size: 20px;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding-top: 6px;
+  float: right;
+  margin-right: 10%;
+  margin-top: 40px;
+  font-family: sans-serif;
+  text-indent: -4px;
+}
+
+button[type=submit]:active {
+  background-color: #675970;
+}
+
+.header {
+  width: 90%;
+  height: 58px;
+  background-color: #F1F5FA;
+}
+
+.header h2 {
+  color: #334659;
+  font-size: 30px;
+  display: inline;
+  position: relative;
+  top: 8px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 800;
+}
+
+.top_icon {
+  margin-top: 5px;
+  width: 48px;
+  height: 48px;
+}
+
+.wrap {
+  width: 90%;
+  background-color: white;
+  height: 93%;
+  padding-left: 4%;
+}
+
+.searchcf {
+  float: left;
+  width: 44%;
+  border-right: medium #EFF1F5 solid;
+  height: 100%;
+  padding-top: 50px;
+
+}
+
+.resultsview {
+  float: right;
+  width: 48%;
+  font-family: sans-serif;
+  color: #334659;
+}
+
+.resultsview h3 {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.resultsview p {
+  font-size: 17px;
+  padding-left: 8%;
+}
+
+.eventpanel {
+  width: 90%;
+  height: 80px;
+  background-color: #EFF1F5;
+  margin-right: 10%;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.eventpanel h1 {
+  color: #334659;
+  padding-top: 26px;
+  padding-left: 25px;
+  font-size: 20px;
+}
+
+.eventpanel form {
+  padding-top: 25px;
+  padding-left: 25px;
+  border: 2px gray;
+
+}
+
+.eventpanel h2 {
+  padding-top: 10px;
+  color: #334659;
+  font-size: 14px;
+  padding-left: 26px;
+
+}
+
+.searchoptions {
+  padding-top: 2%;
+  padding-left: 5%;
+}
+
+.searchopt {
+  display: inline;
+  padding-right: 20px;
+}
+
+.resultsfilter {
+  padding-top: 3%;
+}
+
+
+.searchtab {
+  width: 30%;
+  height: 50px;
+  background-color: #DEE3EC;
+  margin-left: 0;
+  border-radius: 3px 3px 0px 0px;
+  display: inline-block;
+
+}
+
+.searchtab h3{
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: #334659;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.tabdeselect {
+  width: 30%;
+  height: 50px;
+  background-color: #EFF1F5;
+  margin-left: 0;
+  border-radius: 3px 3px 0px 0px;
+  display: inline-block;
+}
+
+.tabdeselect h3{
+  font-size: 18px;
+  font-family: sans-serif;
+  font-weight: 400;
+  color: #919BA7;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.tabicon {
+  display: inline;
+  float: right;
+  margin-top: -33px;
+  padding-right: 7%;
+  width: 30px;
+  height: 30px;
+}
+
+.tabiconpop {
+  display: inline;
+  float: right;
+  margin-top: -43px;
+  padding-right: 7%;
+  width: 48px;
+  height: 48px;
+}
+
+.refinepanel {
+  width: 90%;
+  height: 130px;
+  background-color: #DEE3EC;
+  margin-right: 10%;
+  /*border-radius: 0px 0px 5px 5px;*/
+  margin-top: -20px;
+}
+
+.refinepanel h2 {
+  color: #334659;
+  font-size: 18px;
+  padding-left: 26px;
+  font-family: sans-serif;
+  font-weight: 600;
+  padding-top: 25px;
+}
+
+.ageform {
+  display: inline;
+}
+
+.ageinput {
+  width: 8%;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #CCCCCC;
+  padding-bottom: 3px;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.singlepatientinput {
+  display: inline;
+}
+
+.idinput {
+  width: 25%;
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #CCCCCC;
+  margin-right: 10px;
+}
+
+.idlabel {
+  color: #334659;
+  font-family: sans-serif;
+  padding-right: 5px;
+}
+
+.filterview {
+  padding-bottom: 0px;
+}
+
+.filterview p {
+  text-decoration: underline;
+  display: inline;
+  color: #334659;
+  padding-left: 0px;
+  font-size: 14px;
+
+  /*add to add box effect on filter view values NEEDS WORK*/
+  /*box-shadow: inset 0px 0px 10px #334659*/
+}
+
+.filterview h2 {
+  color: #334659;
+  font-weight: normal;
+  margin-top: -20px
+}
+
+.resultsbox {
+  height: 46em;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.pageview {
+  text-align: center;
+  position: relative;
+  bottom: 0px;
+  background-color: #F1F5FA;
+  width: 100%;
+  height: 55px;
+}
+
+
+.pagenum {
+  color: gray;
+  font-family: sans-serif;
+  font-weight: bold;
+  display: inline;
+  padding-left: 0px;
+  font-size: 24px;
+}
+
+.pagenumfocus {
+  color: #334659;
+}
+
+.pagenum:active {
+  color: #335659;
+}
+
+/*Search glass icon*/
+.material-icons.md-30 {
+  font-size: 30px;
+  vertical-align: middle;
+}
+
+/*arrow dropdown icon style*/
+.material-icons.md-36 {
+  font-size: 36px;
+  float: right;
+  padding-right: 5%;
+  color: #334659;
+  margin-top: -37px;
+}
+
+.material-icons.pagearrow {
+  font-size: 36px;
+  color: #334659;
+  position: relative;
+  top: 10px;
+}
+
+.material-icons.grapharrow {
+  font-size: 36px;
+  color: #334659;
+  float: right;
+  margin-right: 15%;
+  margin-top: -65px;
+}
+
+.material-icons.grapharrowdown {
+  font-size: 36px;
+  color: #334659;
+  float: right;
+  margin-right: 15%;
+  margin-top: -65px;
+}
+
+hr {
+     color: #EFF1F5;
+     background: #EFF1F5;
+     width: 95%;
+     height: 1px;
+}
+/*
+.dropdown-toggle:active, .open .dropdown-toggle {
+  background-color: #334569;
+  color: white;
+}
+*/
+
+ul.dropdown-menu>li.active>a{
+    background: #334569 !important;
+}
+
+.profileButton {
+  float: right;
+  background-color: #F1F5FA;
+  border: 1px solid #D9DEE8;
+  color: #334659;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 1%;
+  cursor: pointer;
+  margin-right: 1%;
+}
+
+.profileButton:hover, .profileButton:focus {
+  background-color: #344659;
+  color: white;
+}
+
+.nameHalfOfButton {
+  float: left;
+  padding-right: 20px;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+.dropdownArrow {
+  float: right;
+}
+
+.accountDropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 30px;
+}
+
+.accountDropdown a {
+  color: #334659;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 10pt;
+}
+
+.accountDropdown a:hover {background-color: #EFF1F5}
+
+.documentDiv {
+  cursor: pointer;
+}
+.documentDiv:hover {
+  color: #D3D3D3;
+}
+
+.chartcontainer {
+  height: 250px;
+  width: 35%;
+  margin-left: 0;
+}
+
+.charts {
+  height: 100%;
+  width: 100%;
+}
+
+.chartsRow1 {
+  display: flex;
+}
+.chartsRow2 {
+  display: flex;
+}
+.userGuideLink {
+  float: right;
+  padding-right: 8%;
+  cursor: pointer;
+}

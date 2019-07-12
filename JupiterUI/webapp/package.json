@@ -1,0 +1,41 @@
+{
+  "name": "Jupiter",
+  "version": "1.0.0",
+  "description": "UI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node /usr/src/app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "angularjs-dropdown-multiselect": "2.0.0-beta.10",
+    "crypto-js": "^3.1.9-1",
+    "fs": "0.0.1-security",
+    "good": "^7.2.0",
+    "good-console": "^6.4.0",
+    "good-squeeze": "^5.0.2",
+    "hapi": "^16.4.3",
+    "inert": "^4.2.0",
+    "json-server": "0.10.1",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.6.5",
+    "browserify": "^14.4.0",
+    "jasmine-core": "^2.6.4",
+    "karma": "^1.7.0",
+    "karma-browserify": "^5.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-safari-launcher": "^1.0.0",
+    "watchify": "^3.9.0",
+    "lru-cache": "^4.1.1",
+    "pseudomap": "^1.0.2",
+    "request": "^2.81.0",
+    "yallist": "^3.0.2"
+  }
+}
